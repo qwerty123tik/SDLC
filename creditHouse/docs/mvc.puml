@@ -1,0 +1,71 @@
+@startuml
+
+class CreditModel {
+    - amount : double
+    - rate : double
+    - years : int
+    - monthlyPayment : double
+    - totalPayment : double
+    - overpaymentFactor : double
+    - support : PropertyChangeSupport
+
+    + setData(amount : double, rate : double, years : int)
+    - calculate()
+    + getMonthlyPayment() : double
+    + getOverpaymentFactor() : double
+    + addListener(listener : PropertyChangeListener)
+}
+
+class MainView {
+    - resultLabel : JLabel
+    - inputButton : JButton
+
+    + MainView()
+    + getInputButton() : JButton
+    + updateResults(monthlyPayment : double, overpaymentFactor : double)
+}
+
+class InputDialog {
+    - amountField : JTextField
+    - rateField : JTextField
+    - yearsField : JTextField
+    - confirmed : boolean
+
+    + InputDialog(parent : JFrame, lastAmount : double, lastRate : double, lastYears : int)
+    + isConfirmed() : boolean
+    + getAmount() : double
+    + getRate() : double
+    + getYears() : int
+    + showError(message : String)
+}
+
+class CreditController {
+    - model : CreditModel
+    - view : MainView
+    - lastAmount : double
+    - lastRate : double
+    - lastYears : int
+
+    + CreditController(model : CreditModel, view : MainView)
+    - processInput()
+}
+
+class Main {
+    + main(args : String[])
+}
+
+Main --> CreditModel : создаёт
+Main --> MainView : создаёт
+Main --> CreditController : связывает MVC
+
+MainView --> CreditController : ввод данных
+CreditController --> InputDialog : открывает
+InputDialog --> CreditController : передаёт данные
+
+CreditController --> CreditModel : устанавливает данные
+CreditModel --> CreditController : уведомляет об изменении
+CreditController --> MainView : передаёт результаты
+
+CreditModel --> CreditModel : calculate()
+
+@enduml
