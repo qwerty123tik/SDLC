@@ -780,30 +780,30 @@
 
 #### Главная страница (каталог, поиск, фильтры)
 
-![alt text](image.png)
+![alt text](main.png)
 
 Модель: [`img/main.sysml`](img/main.sysml)
 
 #### Страница рецепта
 
-![alt text](image-1.png)
+![alt text](recipe.png)
 
 Модель: [`img/recipe.sysml`](img/recipe.sysml)
 
 #### Форма создания и редактирования рецепта
 
-![alt text](image-2.png)
+![alt text](edit.png)
 
 Модель: [`img/edit.sysml`](img/edit.sysml)
 
 #### Избранное
 
-![alt text](image-3.png)
+![alt text](favorites.png)
 
 Модель: [`img/favorites.sysml`](img/favorites.sysml)
 
 #### Вход и регистрация
 
-![alt text](image-4.png)
+![alt text](auth.png)
 
 Модель: [`img/auth.sysml`](img/auth.sysml)
